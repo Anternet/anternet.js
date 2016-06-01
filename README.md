@@ -13,7 +13,7 @@
 
 * [shared-vars.js](https://github.com/Anternet/shared-vars.js) - Share variables between two or more endpoints
 
-*** More libraries is on the way.. ***
+**More libraries is on the way..**
 
 ## Example
 
