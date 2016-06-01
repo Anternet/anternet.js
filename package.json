@@ -8,7 +8,7 @@
     "anternet",
     "peer"
   ],
-  "main": "index.js",
+  "main": "protocol.js",
   "engines": {
     "node": ">=6.0.0"
   },

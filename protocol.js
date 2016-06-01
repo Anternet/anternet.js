@@ -1,7 +1,7 @@
 const EventEmitter = require('events');
 const dgram = require('dgram');
-const Parser = require('./parser');
-const RidMap = require('./rid-map');
+const Parser = require('./lib/parser');
+const RidMap = require('./lib/rid-map');
 
 
 const RID_MAX = 0xffff;
@@ -172,3 +172,5 @@ Protocol.Errors = {
   BAD_PARAM: -5,
   NOT_FOUND: -6,
 };
+
+Protocol.Parser = Parser;

@@ -11,7 +11,7 @@ describe('Brute force', () => {
     const msgType = 1;
 
     // peer 1
-    const anternet1 = Anternet.create();
+    const anternet1 = new Anternet();
     anternet1.bind(port);
 
     anternet1.on(msgType, (rid, args, rinfo) => {
@@ -20,7 +20,7 @@ describe('Brute force', () => {
     });
 
     // peer 2
-    const anternet2 = Anternet.create();
+    const anternet2 = new Anternet();
     anternet2.request(msgType, testArgs, port, address, (err, args, rinfo) => {
       if (err) return done(err);
 
