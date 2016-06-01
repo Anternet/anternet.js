@@ -1,5 +1,7 @@
 # anternet.js
 
+[![Join the chat at https://gitter.im/Anternet/anternet.js](https://badges.gitter.im/Anternet/anternet.js.svg)](https://gitter.im/Anternet/anternet.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![build](https://img.shields.io/travis/Anternet/anternet.js.svg?branch=master)](https://travis-ci.org/Anternet/anternet.js)
 [![npm](https://img.shields.io/npm/v/anternet.svg)](https://npmjs.org/package/anternet)
 [![Join the chat at https://gitter.im/Anternet/anternet.js](https://badges.gitter.im/Anternet/anternet.js.svg)](https://gitter.im/Anternet/anternet.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
