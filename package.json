@@ -1,0 +1,35 @@
+{
+  "name": "anternet",
+  "version": "0.1.0",
+  "description": "A framework of libraries based on UDP protocol for peer-to-peer communications.",
+  "keywords": [
+    "p2p",
+    "udp",
+    "anternet",
+    "peer"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Moshe Simantov <ms@development.co.il> (https://github.com/moshest)",
+  "license": "MIT",
+  "dependencies": {
+    "msgpack5": "^3.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.10.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-config-airbnb-base": "^3.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "mocha": "^2.4.5",
+    "mocha-eslint": "^2.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Anternet/anternet.js.git"
+  }
+}
