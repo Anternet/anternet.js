@@ -11,7 +11,9 @@
 
 ## Libraries
 
-* [shared-vars.js](https://github.com/Anternet/shared-vars.js) - Share variables between two or more endpoints
+* [anternet-channel](https://npmjs.org/package/anternet-channel) - Listening to broadcasts form other peers
+* [anternet-broadcast](https://npmjs.org/package/anternet-broadcast) - Broadcast to other peers that listening on given channel
+* [shared-vars](https://npmjs.org/package/shared-vars) - Share variables between two or more endpoints
 
 **More libraries is on the way..**
 
