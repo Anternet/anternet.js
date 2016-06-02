@@ -1,6 +1,7 @@
 const EventEmitter = require('events');
 const dgram = require('dgram');
 const Parser = require('./lib/parser');
+const Extension = require('./lib/extension');
 const RidMap = require('./lib/rid-map');
 
 
@@ -14,6 +15,40 @@ class Protocol extends EventEmitter {
 
     this.rids = new RidMap(RID_MAX);
     this.parser = opts.parser || new Parser();
+    this.extensions = new Map();
+  }
+
+
+  /** extension methods **/
+
+  extend(Ext) {
+    if (!(Ext.prototype instanceof Extension)) {
+      throw new Error('Expect the first argument to extend Extension class');
+    }
+
+    let extension = this.extensions.get(Ext);
+    if (!extension) {
+      extension = new Ext(this);
+      this.extensions.set(Ext, extension);
+
+      extension.setup();
+    }
+
+    return extension;
+  }
+
+  release(Ext) {
+    if (!(Ext.prototype instanceof Extension)) {
+      throw new Error('Expect the first argument to extend Extension class');
+    }
+
+    const extension = this.extensions.get(Ext);
+    if (extension) {
+      extension.destroy();
+      this.extensions.delete(Ext);
+    }
+
+    return this;
   }
 
 
@@ -77,12 +112,14 @@ class Protocol extends EventEmitter {
     socket.on('close', () => {
       this.socket = null;
       this.emit('close');
+
+      this.destroy();
     });
 
     socket.on('error', (err) => {
       if (!this.emit('error', err)) throw err;
 
-      this.socket = null;
+      this.destroy();
     });
 
     socket.on('listening', () => {
@@ -113,6 +150,16 @@ class Protocol extends EventEmitter {
     if (this.socket) {
       this.socket.close();
     }
+  }
+
+  destroy() {
+    if (this.socket) {
+      this.close();
+      return;
+    }
+
+    this.extensions.forEach(extension => extension.destroy());
+    this.extensions = null;
   }
 
 
@@ -174,3 +221,4 @@ Protocol.Errors = {
 };
 
 Protocol.Parser = Parser;
+Protocol.Extension = Extension;

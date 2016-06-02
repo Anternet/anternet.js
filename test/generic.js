@@ -2,8 +2,8 @@ const assert = require('assert');
 const Anternet = require('../');
 const { describe, it } = global;
 
-describe('Brute force', () => {
-  it('should run readme example', (done) => {
+describe('generic', () => {
+  it('should run README example', (done) => {
     const address = '127.0.0.1';
     const port = 12345;
     const testArgs = ['foo', 'bar'];

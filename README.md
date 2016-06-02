@@ -19,12 +19,15 @@
 
 ```js
 const Anternet = require('anternet');
+
 const msgType = 1; // can be any positive number
+const address = '127.0.0.1';
+const port = 12345;
 
   
 // peer 1
 const anternet1 = new Anternet();
-anternet1.bind(12345);
+anternet1.bind(port);
 
 anternet1.on(msgType, (rid, args, rinfo) => {
   anternet1.response(rid, args.reverse(), rinfo.port, rinfo.address);
@@ -32,7 +35,7 @@ anternet1.on(msgType, (rid, args, rinfo) => {
 
 // peer 2
 const anternet2 = new Anternet();
-anternet2.request(msgType, ['foo', 'bar'], 12345, '127.0.0.1', (err, args, rinfo) => {
+anternet2.request(msgType, ['foo', 'bar'], port, address, (err, args, rinfo) => {
   console.log(args); // [ "bar", "foo" ]
 });
 ```
