@@ -188,9 +188,12 @@ class Protocol extends EventEmitter {
     if (typeof type !== 'number' || typeof rid !== 'number') return;
 
     if (type > 0) {
-      if (this.emit(type, rid, data, rinfo)) return;
+      this.emit('request', type, rid, data, rinfo);
 
-      this.error(this.constructor.Errors.UNKNOWN_REQUEST, rid, 'Unknown Request', rinfo.port, rinfo.address);
+      if (!this.emit(type, rid, data, rinfo)) {
+        this.emit('unknownRequest', type, rid, data, rinfo);
+      }
+
       return;
     }
 
