@@ -218,9 +218,20 @@ module.exports = Protocol;
 
 Protocol.Errors = {
   GENERAL: -1,
-  UNKNOWN_REQUEST: -4,
-  BAD_PARAM: -5,
-  NOT_FOUND: -6,
+  UNKNOWN: -2,
+  INVALID: -3,
+
+  BAD_REQUEST: -400,
+  FORBIDDEN: -403,
+  NOT_FOUND: -404,
+  NOT_ALLOWED: -405,
+  NOT_ACCEPTABLE: -406,
+  CONFLICT: -409,
+  TOO_LONG: -414,
+
+  INTERNAL: -500,
+  NOT_IMPLEMENTED: -501,
+  UNAVAILABLE: -503,
 };
 
 Protocol.Parser = Parser;
