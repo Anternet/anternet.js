@@ -7,12 +7,14 @@ const RidMap = require('./lib/rid-map');
 
 const RID_MAX = 0xffff;
 const RID_TIMEOUT = 10e3;
+const TYPE_DEFAULT = 'udp4';
 
 class Protocol extends EventEmitter {
 
   constructor(opts = {}) {
     super();
 
+    this.type = opts.type || TYPE_DEFAULT;
     this.rids = new RidMap(RID_MAX);
     this.parser = opts.parser || new Parser();
     this.extensions = new Map();
@@ -97,7 +99,7 @@ class Protocol extends EventEmitter {
 
   bind(...args) {
     if (!(args[0] instanceof dgram.Socket)) {
-      const socket = dgram.createSocket('udp4');
+      const socket = dgram.createSocket(this.type);
 
       this.bindSocket(socket);
       socket.bind.apply(socket, args);
@@ -107,6 +109,8 @@ class Protocol extends EventEmitter {
   }
 
   bindSocket(socket, callback) {
+    if (socket.type !== this.type) throw new Error('Invalid socket type');
+
     if (callback) this.once('listening', callback);
 
     socket.on('close', () => {
