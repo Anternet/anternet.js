@@ -12,7 +12,9 @@
 ## Libraries
 
 * [anternet-channel](https://npmjs.org/package/anternet-channel) - Listening to broadcasts form other peers
-* [anternet-broadcast](https://npmjs.org/package/anternet-broadcast) - Broadcast to other peers that listening on given channel
+* [anternet-broadcast](https://npmjs.org/package/anternet-broadcast) - Broadcast to other peers that listening on given channel 
+* [anternet-peer](https://npmjs.org/package/anternet-peer) - Peer extension 
+* [anternet-peers-set](https://npmjs.org/package/anternet-peers-set) - Storing and sharing set of peers
 * [shared-vars](https://npmjs.org/package/shared-vars) - Share variables between two or more endpoints
 
 **More libraries is on the way..**
